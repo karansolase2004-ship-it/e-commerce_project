@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+
+# below code make that environment file to pass into production using devops tools
 import os
 from dotenv import load_dotenv 
+# it connects the dot env file to project 
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +35,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,8 +45,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'store',
 ]
+# below we have added our installed app - store 
 
 MIDDLEWARE = [
+#   adding below entry after pip install django-cors-headers
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -126,6 +130,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# adding below after pip install django cores
 CORS_ALLOW_ALL_ORIGINS = [
   "http://localhost:5173/"
 ]

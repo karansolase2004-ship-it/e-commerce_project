@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # adding below url to fetch Api from backend
     path('api/', include('store.urls')),
 ]
