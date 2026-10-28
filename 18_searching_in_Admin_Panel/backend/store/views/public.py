@@ -3,14 +3,14 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view, permission_classes
-from ..serializers import RegisterSerializer, UserSerializer, AdminRegisterSerializer
+from ..serializers import RegisterSerializer, UserSerializer
 from rest_framework import status
 from ..models import Product, Category, Cart, CartItem, Order, OrderItem
 from ..serializers import ProductSerializer, CategorySerializer, CartSerializer, CartItemSerializer
 from rest_framework.pagination import PageNumberPagination
 
 class productpagination(PageNumberPagination) : 
-  page_size = 3
+  page_size = 4
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
@@ -87,7 +87,7 @@ def update_cart_quantity(request) :
     item = CartItem.objects.get(id=item_id)
     if int(quantity) < 1 :
       item.delete()
-      return Response({'error' : 'Quantity must be at least 1'}, status = 400)
+      return Response(status=204)
 
     item.quantity = quantity
     item.save()
@@ -108,7 +108,7 @@ def create_order(request):
     payment_method = data.get('payment_method', 'COD')
 
     if not phone.isdigit() or len(phone) < 10 : 
-      return Response({'error' : 'Invalid phone number'}, statuc=400)
+      return Response({'error' : 'Invalid phone number'}, status=400)
 
     cart, created = Cart.objects.get_or_create(user=request.user)
     if not cart.items.exists() : 

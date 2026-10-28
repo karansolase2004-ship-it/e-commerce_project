@@ -68,7 +68,7 @@ function Productdetails(){
               {product.description}
             </p>
             <p className="text-2xl font-semibold text-green-600 mb-6">
-              ${product.price}
+              ₹{product.price}
             </p>
             {/* <button onClick={() => addtocart(product.id)} */}
             <button onClick={handleAddtoCart}

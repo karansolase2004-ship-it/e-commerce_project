@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAccessToken } from "../../utils/auth";
-import Navbar from "../components/Navbar";
+import Navbar from "../../user/components/Navbar";
 
 function AddProduct() {
   const BASE = import.meta.env.VITE_DJANGO_BASE_URL;
