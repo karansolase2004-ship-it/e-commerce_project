@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 function Productcard({ product, isAdmin = false, onEdit, onDelete }) {
   const BASEURL = import.meta.env.VITE_DJANGO_BASE_URL;
-
   const card = (
     <div
       className={`bg-white rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform p-4 ${

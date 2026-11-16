@@ -27,7 +27,6 @@ def get_products(request) :
 
   if search : 
     products = products.filter(name__icontains=search)
-
   paginator = productpagination()
   paginated_product = paginator.paginate_queryset(products, request)
   serializer = ProductSerializer(paginated_product, many=True)
@@ -115,8 +114,14 @@ def create_order(request):
       return Response({'error' : 'Cart is empty'}, status = 400)
 
     total = sum([item.product.price * item.quantity for item in cart.items.all()])
-
-    order = Order.objects.create(user = request.user, total_amount=total)
+    
+    order = Order.objects.create(
+      user = request.user, 
+      name=name,
+      address = address,
+      phone = phone,
+      payment_method=payment_method,
+      total_amount=total)
 
     for item in cart.items.all() : 
       OrderItem.objects.create(

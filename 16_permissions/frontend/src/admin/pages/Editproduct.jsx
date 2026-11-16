@@ -64,11 +64,14 @@ function EditProduct() {
       setForm({
         ...form,
         image: files[0],
+        // it adds the existing form + image provided
       });
     } else {
       setForm({
+        // this ... is spread operator. 
         ...form,
         [name]: value,
+        // it adds the existing existing form and value represent the current value of the input after the user changes it. and setForm called at each time the user input so value represent only one field at time. 
       });
     }
   }

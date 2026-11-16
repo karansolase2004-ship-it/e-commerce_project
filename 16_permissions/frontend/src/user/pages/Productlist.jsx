@@ -10,11 +10,15 @@ function Productlist({search}) {
 
   const [page, setPage] = useState(1);
   function increasePageValue() {
+    // it just check current pages is less than total pages
+    // otherwise increasing current page would exceed the total page value so checking is neccessary
     if (page < numOfPages) {
       setPage((curr) => curr + 1);
     }
   }
 
+  // it check current page is greater then 1 
+  // other current page will get 0 if it was 1 after deduction without checking
   function decreasePageValue() {
     if (page > 1) {
       setPage((curr) => curr - 1);

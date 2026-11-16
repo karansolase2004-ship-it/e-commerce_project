@@ -1,3 +1,4 @@
+
 from ..permissions import IsAdminUser
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import api_view, permission_classes
@@ -61,7 +62,6 @@ def update_product(request,id):
 @api_view(["DELETE"])
 @permission_classes([IsAdminUser])
 def delete_product(request,id):
-
     try:
         product = Product.objects.get(
             id=id,

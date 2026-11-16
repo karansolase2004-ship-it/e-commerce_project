@@ -9,7 +9,16 @@ admin.site.register(UserProfile)
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "total_amount", "created_at")
+    list_display = (
+        "id",
+        "user",
+        "name",
+        "phone",
+        "address",
+        "payment_method",
+        "total_amount",
+        "created_at",
+        )
     readonly_fields = ("created_at",)
 
 admin.site.register(OrderItem)
